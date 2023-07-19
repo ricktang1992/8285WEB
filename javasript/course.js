@@ -11,6 +11,7 @@ const ccccccc = [
     {"src":"images/CST2355.jpg", "alt":"The Algonquin Collage web page photo","coursecode": "CST2355","level":"level 2","title": "Database Systems","description": "Database systems can automate data processing tasks as well as tie into the security of information technology systems.Students acquire practical experience using market-leading object-relational database management systems like Oracle andMySQL. Students obtain hands-on experience with advanced engineering modeling tools along with SQL, SQL scripts and programming with Oracle's PL/SQL blocks."},
 ]
 var result=ccccccc;
+var filtcc=ccccccc;
 var aaaaaa=0;
 function sortCourseABC(){
     if(aaaaaa%2==0){
@@ -19,55 +20,49 @@ function sortCourseABC(){
         result=result.sort((a, b) => b.level.localeCompare(a.level));
     }
     aaaaaa++;
-    loading();
+    loading(result);
 }
 var abc;
 function filter2ccccccc() {
-    if(abc==1){
-        serachccccccc();
-    }
-    result=result.filter(function(c){ return c.level === "level 2"; });
-    loading();
+    filtcc=ccccccc.filter(function(c){ return c.level === "level 2"; });
+    serachccccccc();
     abc=0;
 }
 function filter1ccccccc() {
-    if(abc==0){
-        serachccccccc();
-    }
-    result=result.filter(function(c){ return c.level === "level 1"; });
-    loading();
+    filtcc=ccccccc.filter(function(c){ return c.level === "level 1"; });
+    serachccccccc();
     abc=1;
 }
 function resetccccccc() {
-    var sousuo = document.getElementById("myInput").value.toUpperCase();
-    sousuo.value="";
+    document.getElementById("myInput").value="";
     result=ccccccc;
-    loading();
+    loading(result);
+    abc=3;
 }
 function serachccccccc() {
     var sousuo = document.getElementById("myInput").value.toUpperCase();
-    result=ccccccc.filter(function(c){ return c.title.toUpperCase().indexOf(sousuo) > -1; });
-    loading();
+    result=filtcc.filter(function(c){ return c.title.toUpperCase().indexOf(sousuo) > -1; });
+    loading(result);
 } 
 
-function loading() {
+function loading(heheyixiao) {
     var count;
     var shabi=document.getElementById("shabi");
     shabi.innerHTML=null;
-    for(count=0;count<result.length;count++){
+    for(count=0;count<heheyixiao.length;count++){
         const section = document.createElement("section");
         const img =document.createElement("img");
-        img.setAttribute("src",result[count].src);
-        img.setAttribute("alt",result[count].alt);
+        img.setAttribute("src",heheyixiao[count].src);
+        img.setAttribute("alt",heheyixiao[count].alt);
         const div =document.createElement("div");
         const coursecodes =document.createElement("h3");
-        coursecodes.textContent=result[count].coursecode;
+        coursecodes.textContent=heheyixiao[count].coursecode;
         const levels =document.createElement("p");
-        levels.textContent=result[count].level;
+        levels.textContent=heheyixiao[count].level;
         const titles =document.createElement("p");
-        titles.textContent=result[count].title;
+        titles.textContent=heheyixiao[count].title;
         const descriptions =document.createElement("p");
-        descriptions.textContent=result[count].description;
+        descriptions.textContent=heheyixiao[count].description;
         section.appendChild(img);
         section.appendChild(div);
         div.appendChild(coursecodes);
@@ -77,4 +72,4 @@ function loading() {
         shabi.appendChild(section);
     }
 }
-loading();
+loading(result);
