@@ -21,13 +21,22 @@ function sortCourseABC(){
     aaaaaa++;
     loading();
 }
+var abc;
 function filter2ccccccc() {
-    result=ccccccc.filter(function(c){ return c.level === "level 2"; });
+    if(abc==1){
+        serachccccccc();
+    }
+    result=result.filter(function(c){ return c.level === "level 2"; });
     loading();
+    abc=0;
 }
 function filter1ccccccc() {
-    result=ccccccc.filter(function(c){ return c.level === "level 1"; });
+    if(abc==0){
+        serachccccccc();
+    }
+    result=result.filter(function(c){ return c.level === "level 1"; });
     loading();
+    abc=1;
 }
 function resetccccccc() {
     var sousuo = document.getElementById("myInput").value.toUpperCase();
